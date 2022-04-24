@@ -1,0 +1,11 @@
+---
+layout: post
+title:  "가독성 테스트"
+date:   2022-03-24 14:49:24 +0900
+categories: 뻘소리
+---
+
+*영국은 약해지거나 실패하지 않을 것입니다. 우리는 끝까지 싸울 것입니다. 우리는 프랑스에서 싸울 것입니다. 우리는 바다와 대양에서 싸울 것입니다. 우리는 자신감과 힘을 길러 하늘에서 싸울 것입니다. 우리는 어떤 대가를 치르더라도 영국을 지켜 낼 것입니다. 우리는 해변에서 싸울 것입니다. 우리는 상륙지점에서 싸울 것입니다. 우리는 들판과 거리에서 싸울 것입니다. 우리는 언덕에서 싸울 것입니다. 우리는 절대로 항복하지 않을 것입니다!*   
+*We shall not flag or fail. We shall go on to the end. We shall fight in France, we shall fight on the seas and oceans, we shall fight with growing confidence and growing strength in the air, we shall defend our island, whatever the cost may be. We shall fight on the beaches, we shall fight on the landing grounds, we shall fight in the fields and in the streets, we shall fight in the hills, we shall never surrender!*   
+   
+대전기 그레이트 브리튼 연합왕국 전시수상, 윈스턴 처칠

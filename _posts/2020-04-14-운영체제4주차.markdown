@@ -1,0 +1,6 @@
+---
+layout: post
+title:  "스레드"
+date:   2022-04-14 14:49:24 +0900
+categories: 운영체제
+---

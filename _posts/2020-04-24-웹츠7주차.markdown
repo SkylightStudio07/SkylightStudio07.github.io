@@ -1,0 +1,197 @@
+---
+layout: post
+title:  "가독성 테스트"
+date:   2022-04-03 14:49:24 +0900
+categories: 데이터베이스
+---
+
+# 기초
+---
+## JSON이란?
+- JSON(Javascript Object Notation)은 텍스트 기반의 데이터 교환 형식
+- 자바스크립트에서 유래
+- 공식적인 인터넷 미디어 타입은 application/json이며 파일 이름 확장자는 .json
+- 서로 다른 프로그래밍 언어 간에 데이터를 전달하기 위해 사용하는 언어
+- PHP를 사용하여 JSON 데이터로 변환하여 사용하는 경우가 많음
+<br>
+
+# JSON이란?
+![noimage!](./웹프/json%EA%B5%AC%EC%A1%B0.png)
+- ### JSON의 구조
+  - {변수명:값}
+  - cf) 변수명이 myID이고 값이 Hello일 경우 :
+    - {myID:'Hello'}
+  - 배열 형태는 [] 사용
+    - cf) userID 변수의 경우
+      - {userID:['first', 'second', 'third']}
+---
+# 본격적으로
+## 자바스크립트로 JSON 데이터 다루기
+- 자바스크립트는 웹브라우저에서 작동하는 언어이며, HTML 태그 내의 head 태그 내에 'script' 태그를 생성하여 작성
+- 자바스크립트 사용 방법
+```
+<head>
+    <script>
+    // 이곳에 자바스크립트 언어 사용
+    </script>
+</head>
+```
+  - cf) JSON 데이터를 변수에 대입하기
+    - data = {userID:'Mickey'}
+  - cf) data 변수에 있는 JSON 데이터의 userID의 값을 사용하기
+    - data.userID
+- Console.log()
+  - Console.log(데이터)
+  - 콘솔은 브라우저의 인스펙터(검사) 탭에서 확인 가능
+---
+## 예제 1 - JSON 데이터 다루기
+```
+<!DOCTYPE HTML>
+<HTML>
+    <head>
+        <script>
+            data = {userID:'Mickey'};
+            Console.log(data.userID);
+        </script>
+    </head>
+</html>
+```
+- 실습 데이터는 상기에서 언급했듯이 인스펙터 창에서 확인하길 바람
+## 예제 1 - JSON 데이터 다루기(배열)
+```
+<!DOCTYPE HTML>
+<HTML>
+    <head>
+
+    <!-- 여기서부터 배열 json 배열 선언 -->
+
+        <script>
+            data = {userID:['first', 'second', 'third']};
+            Console.log(data.userID[0]);
+            Console.log(data.userID[0]);
+            Console.log(data.userID[0]);
+        </script>
+    </head>
+<html>
+```
+- 특이한 점으로, json은 주석 및 코멘트가 들어가지 않는다. 창시자의 의중이 반영된 결과라고 스택플로우는 언급하고 있다.
+---
+# PHP와의 연계
+- 파일에 있는 JSON 데이터를 PHP에서 사용하려면 json_decode()함수를 사용한다.
+- 첫번째 아규먼트에서는 json 데이터를, 두번째 아규먼트에서는 true를 사용.
+```
+$jsonData = file_get_contents(JSON파일);
+$jsonData = json_decode($jsonData, true);
+```
+- json 데이터를 PHP의 배열 형태로 사용할 수도 있다.
+- json_decode() 함수를 사용하지 않으면 json 데이터는 스트링형으로 인식되어, 정상적으로 사용하는 것이 불가능하다.
+- PHP에서의 데이터를 JSON 데이터로 만드려면 json_encode() 함수를 이용하면 된다.
+```
+json_encode(
+    array(
+        변수=>'값'
+    )
+)
+```
+# 본격적인 예제
+## 맛보기 예제
+- 자바스크립트 내장 함수를 이용한 현재 시간 출력
+```
+<!DOCTYPE HTML>
+    <html>
+        <head>
+            <title> 
+            My First Javascript 
+            </title>
+        </head>
+    <body>
+        <script>
+            var now = new Date();
+            document.write(now);    
+        </script>
+    </body>
+    </html>
+```
+![noimage!](./웹프/%EC%98%88%EC%A0%9C7-1%EC%B6%9C%EB%A0%A5.png)
+## 7주차 첫번째 예제
+```
+<script>
+    var msg = ""; // 빈 스트링 선언
+    var now = new Date().getHours(); // 현재 시간(시 단위로) 받아오기
+    if (now < 12) { // 12시 이전인 경우
+        msg = "Good Morning!" 
+    }
+    else if (now < 18) { // 18시 이전이면
+        msg = "Good Afternoon!"
+    }
+    else { // 오후 6시 이후인 경우(저녁)
+        msg = "Good Evening!";
+    }
+    alert(msg); // 알림 창으로 메시지 데이터 출력
+</script>
+```
+![noimage!](./웹프/%EC%98%88%EC%A0%9C7-2%EC%B6%9C%EB%A0%A5.png)
+* 작성 시간은 오후 9시 35분이었다.
+## 7주차 두번째 예제 - 숫자 게임
+```
+<html>
+    <head>
+        <title>
+            json을 이용한 숫자 게임
+        </title>
+        <script>
+            var computerNumber = 53; // 정답
+            var nGuesses = 0; // 사용자가 추측한 횟수
+            function guess() {
+                var result = ""; // 결과 메시지
+                // 사용자가 입력한 값을 받아서 변수 number에 대입한다.
+                var number = parseInt(document.getElementById("user").value);
+                nGuesses++; // 추측 횟수를 증가시킨다.
+                if (number == computerNumber) result = "성공입니다.";
+                else if (number < computerNumber) result = "낮습니다.";
+                else result = "높습니다.";
+                document.getElementById("result").value = result; // 주어진 문자열과 일치하는 id 속성을 가진 요소를 찾고
+                document.getElementById("guesses").value = nGuesses;
+                return true;
+        }
+        </script>
+    </head>
+    <body>
+        <h2>숫자 맞추기 게임</h2>
+        이 게임은 컴퓨터가 생성한 숫자를 맞추는 게임입니다. 숫자는
+        1부터 100 사이에 있습니다.
+        <form> 숫자: <!-- 사용자 입력 및 결과 출력 폼 -->
+            <input type="text" id="user" size="5">
+            <input type="button" value="확인" onclick="guess();"> 추측횟수:
+            <input type="text" id="guesses" size="5"> 힌트:
+            <input type="text" id="result" size="16">
+        </form>
+    </body>
+</html>
+```
+![noimage!](./웹프/%EC%98%88%EC%A0%9C7-3%EC%B6%9C%EB%A0%A5.png)
+* 강의 자료에 있는대로 코드를 입력하면 추측 횟수가 정상적으로 출력되지 않는 문제가 있다.
+## 7주차 세번째 예제 - confirm()
+```
+<script>
+    var user = confirm("confirm()은 사용자의 답변을 전달합니다.");
+    // 결과는 True/False로 반환한다.
+</script>
+```
+![noimage!](./웹프/예제7-4출력.png)
+## 7주차 네번째 예제 - 대화상자
+```
+<!DOCTYPE html>
+<html>
+    <head>
+        <script>
+            function showDialog() { // 대화상자 오픈 함수 정의
+            alert("안녕하세요?");
+            }
+        </script>
+    </head>
+    <body>
+        <button onclick="showDialog()">대화상자오픈</button> // 버튼 클릭 이벤트 정의
+    </body>
+</html>
+```
