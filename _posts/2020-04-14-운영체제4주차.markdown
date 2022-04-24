@@ -1,6 +1,15 @@
+<<<<<<< HEAD
 ---
 layout: post
 title:  "스레드"
 date:   2022-04-14 14:49:24 +0900
 categories: 운영체제
 ---
+=======
+---
+layout: post
+title:  "스레드"
+date:   2022-04-14 14:49:24 +0900
+categories: 운영체제
+---
+>>>>>>> e9fa99f1f2af58f2e1fcd9d634a346e9ed5cabc8
